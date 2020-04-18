@@ -1,7 +1,7 @@
 <?php
 
 // defaults
-Route::view('/', 'welcome');
+Route::redirect('/', 'login');
 Auth::routes(['register' => false]);
 Route::get('home', 'HomeController@index')->name('home');
 

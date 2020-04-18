@@ -6,12 +6,11 @@
 				<th scope="col"> <i class="fa fa-square-o" data-checked="0" data-check="all"></i> </th>
 			@endif
 			<th scope="col"> نام و نام خانوادگی </th>
-			<th scope="col"> سن </th>
-			<th scope="col"> مهارت </th>
-			<th scope="col"> آموزش </th>
-			<th scope="col"> وضعیت نظام وظیفه </th>
-			<th scope="col"> منطقه </th>
+			<th scope="col"> شهرستان </th>
 			<th scope="col"> جنسیت </th>
+			<th scope="col"> نوع معلولیت </th>
+			<th scope="col"> شدت معلولیت </th>
+			<th scope="col"> شماره تماس </th>
 			<th scope="col"> تعداد معرفی </th>
 			<th scope="col" colspan="3"> عملیات </th>
 		</tr>
@@ -26,16 +25,15 @@
 				<td class="@if($madadju->introduces->count()) bg-red-light @endif">
 					{{$madadju->full_name() }}
 				</td>
-				<td>{{$madadju->age()}}</td>
 				<td>
-					 {{$madadju->skill ?? '-'}}
+					 {{$madadju->city ?? '-'}}
 				</td>
-				<td>
-					 {{$madadju->training ?? '-'}}
-				</td>
-				<td>{{$madadju->military_status ?? '-'}}</td>
-				<td>{{$madadju->region ?? '-'}}</td>
 				<td>{{$madadju->male ? 'مرد' : 'زن'}}</td>
+
+				<td> {{$madadju->disabilty_type ?? '-'}} </td>
+				<td> {{$madadju->disabilty_level ?? '-'}} </td>
+				<td> {{$madadju->mobile ?? '-'}} </td>
+
 				<td @unless($madadju->icount) class="text-success" @endunless>
 					{{$madadju->icount ? $madadju->icount : 'صفر'}}
 				</td>

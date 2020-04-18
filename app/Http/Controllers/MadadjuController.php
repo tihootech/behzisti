@@ -30,26 +30,7 @@ class MadadjuController extends Controller
 
         // national code
         if ($phrase = $request->national_code) {
-            $query = $query->where('national_code', 'like', "$phrase%");
-        }
-
-        // age
-        if ($request->age) {
-
-            $query = $query->whereRaw("TIMESTAMPDIFF(YEAR, birthday, CURDATE()) >= $request->age");
-            $query = $query->whereRaw("TIMESTAMPDIFF(YEAR, birthday, CURDATE()) < ". ($request->age + 1));
-
-        }elseif ($request->age_1 || $request->age_2) {
-
-            $query = $query->whereNotNull('birthday');
-
-            if ($request->age_1) {
-                $query = $query->whereRaw("TIMESTAMPDIFF(YEAR, birthday, CURDATE()) >= $request->age_1");
-            }
-            if ($request->age_2) {
-                $query = $query->whereRaw("TIMESTAMPDIFF(YEAR, birthday, CURDATE()) < $request->age_2");
-            }
-
+            $query = $query->where('national_code', 'like', "%$phrase%");
         }
 
         // first name or last name
@@ -69,39 +50,14 @@ class MadadjuController extends Controller
             $query = $query->whereIn('education_grade', $array);
         }
 
-        // education filed
+        // education field
         if ($phrase = $request->education_field) {
             $query = $query->where('education_field', 'like', "%$phrase%");
         }
 
-        // skill
-        if ($phrase = $request->skill) {
-            $query = $query->where('skill', 'like', "%$phrase%");
-        }
-
-        // training
-        if ($phrase = $request->training) {
-            $query = $query->where('training', 'like', "%$phrase%");
-        }
-
-        // married or single
-        if ($request->married != null) {
-            $query = $query->where('married', $request->married);
-        }
-
-        // military status
-        if ($phrase = $request->military_status) {
-            $query = $query->where('military_status', $phrase);
-        }
-
-        // region
-        if (master()) {
-            if ($phrase = $request->region) {
-                $query = $query->where('region', $phrase);
-            }
-        }else {
-            $region = auth()->user()->region();
-            $query = $query->where('region', $region);
+        // education subfield
+        if ($phrase = $request->education_subfield) {
+            $query = $query->where('education_subfield', 'like', "%$phrase%");
         }
 
         $madadjus = $query->orderBy('icount')->paginate(25);
@@ -162,6 +118,8 @@ class MadadjuController extends Controller
     public static function validation($id=0)
     {
         $data =  request()->validate([
+            "state" => "required|string",
+            "city" => "required|string",
             "first_name" => "required|string",
             "last_name" => "required|string",
             "national_code" => [
@@ -169,30 +127,15 @@ class MadadjuController extends Controller
                 "unique:madadjus,national_code,$id",
                 new NationalCode,
             ],
-            "birthday" => [
-                "nullable",
-                new PersianDate
-            ],
+            "support_type" => "required|string",
+            "disabilty_type" => "required|string",
+            "disabilty_level" => "required|string",
             "male" => "required|boolean",
             "education_grade" => "required|string",
             "education_field" => "nullable|string",
-            "skill" => "required|string",
-            "favourites" => "nullable|string",
-            "region" => "required|integer",
-            "insurance_number" => "nullable|string",
-            "telephone" => "nullable|string|digits:11",
-            "mobile" => "required|string|digits:11",
-            "married" => "required|boolean",
-            "military_status" => "required|string",
-            "warden_name" => "required|string",
-            "work_experience" => "required|boolean",
-            "experience" => "nullable|string",
-            "muid" => "required|string|unique:madadjus,muid,$id",
+            "education_subfield" => "nullable|string",
             "address" => "required|string",
-            "warden_national_code" => [
-                "required",
-                new NationalCode,
-            ],
+            "mobile" => "required|string|digits:11",
         ]);
 
         if (only_operator()) {
@@ -201,8 +144,6 @@ class MadadjuController extends Controller
         }else {
             $data['operator_id'] = 0;
         }
-
-        $data['birthday'] = persian_to_carbon($data['birthday']);
 
         return $data;
     }

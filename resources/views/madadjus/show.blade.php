@@ -46,6 +46,20 @@
 					</div>
 				</div>
 			</div>
+			<div class="col-md-4 my-2">
+				<div class="card">
+					<div class="card-body">
+						<b> شماره تماس : </b> <span class="text-info"> {{$madadju->mobile}}  </span>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4 my-2">
+				<div class="card">
+					<div class="card-body">
+						<b> استان و شهرستان : </b> <span class="text-info"> {{$madadju->state ?? '?'}} - {{$madadju->city ?? '?'}}  </span>
+					</div>
+				</div>
+			</div>
 			<div class="col-md-3 my-2">
 				<div class="card">
 					<div class="card-body">
@@ -56,25 +70,18 @@
 			<div class="col-md-3 my-2">
 				<div class="card">
 					<div class="card-body">
-						<b> تاریخ تولد : </b> <span class="text-info"> {{date_picker_date($madadju->birthday)}}  </span>
+						<b> نوع حمایت : </b> <span class="text-info"> {{$madadju->support_type}}  </span>
 					</div>
 				</div>
 			</div>
-			<div class="col-md-2 my-2">
-				<div class="card">
-					<div class="card-body">
-						<b> سن : </b> <span class="text-info"> {{$madadju->age()}}  </span>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-2 my-2">
+			<div class="col-md-3 my-2">
 				<div class="card">
 					<div class="card-body">
 						<b> جنسیت : </b> <span class="text-info"> {{$madadju->male ? 'مرد' : 'زن'}}  </span>
 					</div>
 				</div>
 			</div>
-			<div class="col-md-3 my-2">
+			<div class="col-md-4 my-2">
 				<div class="card">
 					<div class="card-body">
 						<b> مقطع تحصیلی : </b> <span class="text-info"> {{$madadju->education_grade ?? '-'}}  </span>
@@ -88,80 +95,24 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-3 my-2">
-				<div class="card">
-					<div class="card-body">
-						<b> شماره بیمه : </b> <span class="text-info"> {{$madadju->insurance_number ?? '-'}}  </span>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-12 my-2">
-				<div class="card">
-					<div class="card-body">
-						<b> علاقه مندی ها : </b> <span class="text-info"> {{$madadju->favourites ?? '-'}}  </span>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-12 my-2">
-				<div class="card">
-					<div class="card-body">
-						<b> مهارت : </b> <span class="text-info"> {{$madadju->skill ?? '-'}}  </span>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-12 my-2">
-				<div class="card">
-					<div class="card-body">
-						<b> آموزش : </b> <span class="text-info"> {{$madadju->training ?? '-'}}  </span>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3 my-2">
-				<div class="card">
-					<div class="card-body">
-						<b> تلفن : </b> <span class="text-info"> {{$madadju->telephone ?? '-'}}  </span>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3 my-2">
-				<div class="card">
-					<div class="card-body">
-						<b> موبایل : </b> <span class="text-info"> {{$madadju->mobile ?? '-'}}  </span>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3 my-2">
-				<div class="card">
-					<div class="card-body">
-						<b> وضعیت تاهل : </b> <span class="text-info"> {{$madadju->married ? 'متاهل' : 'مجرد'}}  </span>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3 my-2">
-				<div class="card">
-					<div class="card-body">
-						<b> وضعیت نظام وظیفه : </b> <span class="text-info"> {{$madadju->military_status ?? '-'}}  </span>
-					</div>
-				</div>
-			</div>
 			<div class="col-md-4 my-2">
 				<div class="card">
 					<div class="card-body">
-						<b> نام و نام خانوادگی سرپرست : </b> <span class="text-info"> {{$madadju->warden_name ?? '-'}}  </span>
+						<b> گرایش تحصیلی : </b> <span class="text-info"> {{$madadju->education_subfield ?? '-'}}  </span>
 					</div>
 				</div>
 			</div>
-			<div class="col-md-4 my-2">
+			<div class="col-md-3 my-2">
 				<div class="card">
 					<div class="card-body">
-						<b> کدملی سرپرست : </b> <span class="text-info"> {{$madadju->warden_national_code ?? '-'}}  </span>
+						<b> نوع معلولیت: </b> <span class="text-info"> {{$madadju->disabilty_type ?? '-'}}  </span>
 					</div>
 				</div>
 			</div>
-			<div class="col-md-4 my-2">
+			<div class="col-md-3 my-2">
 				<div class="card">
 					<div class="card-body">
-						<b> کد مددجویی : </b> <span class="text-info"> {{$madadju->muid ?? '-'}}  </span>
+						<b> شدت معلولیت: </b> <span class="text-info"> {{$madadju->disabilty_level ?? '-'}}  </span>
 					</div>
 				</div>
 			</div>
@@ -169,19 +120,6 @@
 				<div class="card">
 					<div class="card-body">
 						<b> آدرس : </b> <span class="text-info"> {{$madadju->address ?? '-'}}  </span>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-12 my-2">
-				<div class="card">
-					<div class="card-body">
-						<b> تجربه : </b>
-						<span class="text-info">
-							{{$madadju->work_experience ? 'بلی' : 'خیر'}}
-							@if ($madadju->work_experience && $madadju->experience)
-								({{$madadju->experience}})
-							@endif
-						</span>
 					</div>
 				</div>
 			</div>

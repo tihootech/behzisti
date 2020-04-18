@@ -28,8 +28,6 @@ class CreateMadadjusTable extends Migration
             $table->string('education_grade')->nullable();
             $table->string('education_field')->nullable();
             $table->string('education_subfield')->nullable();
-            $table->string('disability_type')->nullable();
-            $table->string('disability_level')->nullable();
             $table->text('address')->nullable();
             $table->string('mobile')->nullable();
             $table->timestamps();
