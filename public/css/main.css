@@ -1,0 +1,94 @@
+/*******************************/
+/* Fonts */
+/*******************************/
+
+@font-face {
+	src: url(../fonts/Yekan.woff);
+	font-family: 'Yekan';
+}
+
+@font-face {
+	src: url(../fonts/Dinar.ttf);
+	font-family: 'Dinar';
+}
+
+.yekan {
+	font-family: 'Yekan';
+}
+
+.dinar {
+	font-family: 'Dinar';
+}
+
+/*******************************/
+/* Main */
+/*******************************/
+
+body {
+	font-family: 'Yekan', 'Dinar';
+	direction: rtl;
+	text-align: right;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+	font-family: 'Dinar'
+}
+
+.popover {
+	font-family: 'Yekan', 'Dinar';
+}
+
+/*******************************/
+/* Custom */
+/*******************************/
+
+.searchbox-width {
+	min-width: 150px;
+}
+
+.badge-lg {
+	font-size: 85%;
+	padding: 8px 15px;
+}
+
+.text-underlined {
+	text-decoration: underline;
+}
+
+
+/*******************************/
+/* RTL */
+/*******************************/
+.custom-control-label::before, .custom-control-label::after {
+	left: unset;
+}
+
+.custom-control-label > span {
+	padding-right: 25px;
+}
+
+.page-item:first-child .page-link {
+	border-radius: 0;
+	border-top-right-radius: 0.25rem;
+	border-bottom-right-radius: 0.25rem;
+}
+
+.page-item:last-child .page-link {
+	border-radius: 0;
+	border-top-left-radius: 0.25rem;
+	border-bottom-left-radius: 0.25rem;
+}
+
+.nice-select {
+	padding-right: 18px;
+	padding-left: 30px;
+	text-align: right !important;
+}
+.nice-select:after {
+	left: 12px;
+	right: unset;
+}
+.nice-select .option {
+	padding-right: 18px;
+	padding-left: 29px;
+}
